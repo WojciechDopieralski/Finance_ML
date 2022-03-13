@@ -1,15 +1,12 @@
-# CONVICTIONSUMMARY_270_opt3_best2(1).csv
+import matplotlib as mpl
+import matplotlib.pyplot as plt
+import seaborn as sns
+import numpy as np
+import pandas as pd
 
-import csv
+df = pd.read_csv('Assets\CONVICTIONSUMMARY_270_opt3_best2(1).csv', sep='|')
 
-with open('Assets\CONVICTIONSUMMARY_270_opt3_best2(1).csv') as csv_file:
-    csv_reader = csv.reader(csv_file, delimiter='|')
-    line_count = 0
-    for row in csv_reader:
-        if line_count == 0:
-            print(f'Column names are {", ".join(row)}')
-            line_count += 1
-        elif row[4] == ' MERGED ':
-            print(f'\t{row[0]} | {row[1]} | {row[2]} | {row[3]} | {row[4]} | {row[5]} ')
-            line_count += 1
-    print(f'Processed {line_count} lines.')
+df2 = pd.DataFrame()
+df2 = df.loc[df['TYPE'] == 'MERGED']
+
+print(df2)
